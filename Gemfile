@@ -5,8 +5,11 @@ gem 'rails', '3.2.1'
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 
+gem 'mysql'
 gem 'sqlite3'
 
+gem 'ZenTest'
+gem 'autotest-rails-pure'
 
 # Gems used only for assets and not required
 # in production environments by default.
@@ -36,3 +39,14 @@ gem 'jquery-rails'
 
 # To use debugger
 # gem 'ruby-debug19', :require => 'ruby-debug'
+
+# Development and testings gems
+group :development do
+  gem 'rspec-rails'
+  gem 'annotate', '~> 2.4.1.beta'
+end
+
+group :test do
+  gem 'rspec'
+  gem 'webrat'
+end
