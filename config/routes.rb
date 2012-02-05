@@ -1,4 +1,8 @@
 References::Application.routes.draw do
+  match '/sign_up', :to => 'pages#sign_up'
+  match '/sign_in', :to => 'pages#sign_in'
+  root :to => 'pages#home'
+
   # The priority is based upon order of creation:
   # first created -> highest priority.
 
