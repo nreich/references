@@ -1,4 +1,6 @@
 References::Application.routes.draw do
+  resources :users
+
   match '/sign_up', :to => 'pages#sign_up'
   match '/sign_in', :to => 'pages#sign_in'
   root :to => 'pages#home'
