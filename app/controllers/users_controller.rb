@@ -11,7 +11,8 @@ class UsersController < ApplicationController
   def create
     @user = User.new(params[:user])
     if @user.save
-      #add code for successful user creation
+      flash[:success] = "Welcome to Ardelyx Reference Navigator"
+      redirect_to @user
     else
       @title = "Sign Up"
       render 'new'
