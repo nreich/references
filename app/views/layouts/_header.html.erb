@@ -3,7 +3,13 @@
     <ul>
       <li><%= link_to "Home", root_path %></li>
       <li><%= link_to "Sign Up", sign_up_path %></li>
-      <li><%= link_to "Sign In", sign_in_path %></li>
+      <% if current_user %>
+        <li><%= link_to "Sign Out", sign_out_path %></li>
+        <li><%= "You are logged in as #{current_user.first_name} 
+        #{current_user.last_name}" %></li>
+      <% else %>
+        <li><%= link_to "Sign In", sign_in_path %></li>
+      <% end %>      
     </ul> 
   </nav>
 </header>
