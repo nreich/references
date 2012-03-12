@@ -1,4 +1,5 @@
 class SessionsController < ApplicationController
+skip_before_filter :require_signed_in
   def new
     @title = "Sign In"
   end
@@ -18,6 +19,6 @@ class SessionsController < ApplicationController
   
   def destroy
     session[:user_id] = nil
-    redirect_to root_url
+    render 'new'
   end
 end

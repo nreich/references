@@ -1,4 +1,5 @@
 class UsersController < ApplicationController
+    skip_before_filter :require_signed_in, :only => [ :new, :create ]
   def new
     @user = User.new
     @title = "Sign Up"
