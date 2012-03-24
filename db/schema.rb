@@ -11,7 +11,26 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120308035419) do
+ActiveRecord::Schema.define(:version => 20120324180100) do
+
+  create_table "references", :force => true do |t|
+    t.string   "title"
+    t.string   "abstract"
+    t.string   "pubmed_url"
+    t.string   "file_location"
+    t.string   "type"
+    t.date     "year"
+    t.string   "journal"
+    t.string   "issue"
+    t.string   "volume"
+    t.string   "pages"
+    t.string   "conference"
+    t.string   "patent_assignee"
+    t.string   "patent_number"
+    t.string   "publisher"
+    t.datetime "created_at",      :null => false
+    t.datetime "updated_at",      :null => false
+  end
 
   create_table "sessions", :force => true do |t|
     t.string   "session_id", :null => false

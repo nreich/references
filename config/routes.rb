@@ -1,4 +1,6 @@
 References::Application.routes.draw do
+  get "references/show"
+
   get "sessions/new"
 
   resources :users

@@ -7,7 +7,7 @@ gem 'rails', '3.2.1'
 
 gem 'mysql'
 gem 'sqlite3'
-
+#gem 'enum_column3'
 gem 'ZenTest'
 gem 'autotest-rails-pure'
 
