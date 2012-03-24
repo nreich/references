@@ -4,6 +4,7 @@ References::Application.routes.draw do
   get "sessions/new"
 
   resources :users
+  resources :references
   resources :sessions, :only => [:new, :create, :destroy]
 
   match '/sign_up', :to => 'users#new'

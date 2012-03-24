@@ -5,7 +5,7 @@ class CreateReferences < ActiveRecord::Migration
       t.string :abstract
       t.string :pubmed_url
       t.string :file_location
-      t.string :type
+      t.string :reference_type
       t.date :year
       t.string :journal
       t.string :issue

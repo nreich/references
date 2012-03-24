@@ -23,3 +23,6 @@ end
 #  updated_at      :datetime        not null
 #
 
+def self.GetYear
+  return year.Year
+end

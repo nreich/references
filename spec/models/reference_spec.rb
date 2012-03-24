@@ -1,7 +1,15 @@
 require 'spec_helper'
 
 describe Reference do
-  pending "add some examples to (or delete) #{__FILE__}"
+   
+  describe "journal article" do
+  
+    before(:each) do
+      @reference = Factory(:reference)
+    end
+  
+  end
+  
 end
 # == Schema Information
 #

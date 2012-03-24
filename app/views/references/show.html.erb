@@ -1,2 +1,7 @@
 <h1>References#show</h1>
 <p>Find me in app/views/references/show.html.erb</p>
+<p>Title: <%= @reference.title %></p>
+<p>Abstract: <%= @reference.abstract %></p>
+<% if @reference.reference_type == "journal" %>
+<p>Journal: <%= @reference.journal %></p>
+<% end %>
