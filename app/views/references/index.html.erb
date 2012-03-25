@@ -1,0 +1,8 @@
+<h1>References#index</h1>
+<p>Find me in app/views/references/index.html.erb</p>
+<% @references.each do |ref| %>
+  <tr>
+    <td><%= ref.title %></td>
+    <td><%= ref.author_list %></td>
+  </tr>
+<% end %>
