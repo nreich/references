@@ -25,6 +25,11 @@ describe "Pages" do
                                 :content => "Ardelyx Reference Navigator | Home")
       end
       
+      it "should have a references title search" do
+        get '/'
+        response.should have_selector("label", :content => "Title")
+      end
+      
     end
     
   end

@@ -15,6 +15,14 @@ has_many :authors, :through => :reference_author_relationships
     end
   end
   
+  def self.search(search)
+    if search
+      where('title LIKE ?', "%#{search}%")
+    else
+      scoped
+    end
+  end
+  
 end
 # == Schema Information
 #
