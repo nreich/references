@@ -22,3 +22,13 @@ Factory.define :reference do |reference|
   reference.patent_number   "US 2004/1234567"
   reference.publisher       "Overprice Publisher"
 end
+
+Factory.define :author do |author|
+  author.name "that guy"
+end
+
+Factory.define :reference_author_relationship do |relationship|
+  relationship.reference_id 1
+  relationship.author_id    1
+  relationship.author_order 1
+end

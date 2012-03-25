@@ -2,10 +2,20 @@ require 'spec_helper'
 
 describe Reference do
    
-  describe "journal article" do
+  describe "relationship with authors" do
   
     before(:each) do
+      #@user = Factory(:user)
+      #test_sign_in(@user)
       @reference = Factory(:reference)
+    end
+    
+    it "should have a reference_author_relationship method" do
+      @reference.should respond_to(:reference_author_relationships)
+    end
+    
+    it "should have an authors method" do
+      @reference.should respond_to(:authors)
     end
   
   end
@@ -20,7 +30,7 @@ end
 #  abstract        :string(255)
 #  pubmed_url      :string(255)
 #  file_location   :string(255)
-#  type            :string(255)
+#  reference_type  :string(255)
 #  year            :date
 #  journal         :string(255)
 #  issue           :string(255)

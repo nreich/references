@@ -39,11 +39,23 @@ describe ReferencesController do
       @user = Factory(:user)
       test_sign_in(@user)
       @reference = Factory(:reference)
+      @author = Factory(:author)
+      #@reference_author_relationship = 
+      #  @reference.reference_author_relationships.build(:author_id => @author.id,
+      #                                            :reference_id => @reference.id)
+      @relationship = Factory(:reference_author_relationship)
     end
     
     it "should have the right reference journal" do
       get :show, :id => @reference
       response.should have_selector("p", :content => @reference.journal)
+    end
+    
+    it "should have an author list" do
+      get :show, :id => @reference
+      response.should have_selector("p", :content => @author.name)
+      #Technically, this currenty only looks for a single author and not
+      #an entire list of authors
     end
     
   end
