@@ -1,19 +1,19 @@
 require 'spec_helper'
 
-describe Reference do
+describe Citation do
    
     before(:each) do
-      @reference = FactoryGirl.create(:reference)
+      @citation = FactoryGirl.create(:citation)
     end
    
   describe "relationship with authors" do
     
-    it "should have a reference_author_relationship method" do
-      @reference.should respond_to(:reference_author_relationships)
+    it "should have a citation_author_relationship method" do
+      @citation.should respond_to(:citation_author_relationships)
     end
     
     it "should have an authors method" do
-      @reference.should respond_to(:authors)
+      @citation.should respond_to(:authors)
     end
   
   end
@@ -22,14 +22,14 @@ describe Reference do
 end
 # == Schema Information
 #
-# Table name: references
+# Table name: citations
 #
 #  id              :integer(4)      not null, primary key
 #  title           :text
 #  abstract        :text
 #  pubmed_url      :text
 #  file_location   :text
-#  reference_type  :string(255)
+#  citation_type  :string(255)
 #  journal         :string(255)
 #  issue           :string(255)
 #  volume          :string(255)

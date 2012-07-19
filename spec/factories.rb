@@ -8,12 +8,12 @@ FactoryGirl.define do
     password_confirmation  "foobar"
   end
 
-  factory :reference do
-    title           "Sample reference"
-    abstract        "This is just a sample reference"
+  factory :citation do
+    title           "Sample citation"
+    abstract        "This is just a sample citation"
     pubmed_url      ""
     file_location   "file://\\arx-fsv-01\global\Ardelyx_library\Ardelyx_library\000PDF\article.pdf"
-    reference_type  "journal"
+    citation_type  "journal"
     publish_year    "2002"
     journal         "Sample Journal"
     issue           "1"
@@ -30,8 +30,8 @@ FactoryGirl.define do
     name "Doe, J."
   end
 
-  factory :reference_author_relationship do
-    reference_id 1
+  factory :citation_author_relationship do
+    citation_id 1
     author_id    1
   end
 

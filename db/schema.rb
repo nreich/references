@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120629030805) do
+ActiveRecord::Schema.define(:version => 20120719211058) do
 
   create_table "authors", :force => true do |t|
     t.string   "name"
@@ -21,22 +21,22 @@ ActiveRecord::Schema.define(:version => 20120629030805) do
 
   add_index "authors", ["name"], :name => "index_authors_on_name", :unique => true
 
-  create_table "reference_author_relationships", :force => true do |t|
-    t.integer  "reference_id"
+  create_table "citation_author_relationships", :force => true do |t|
+    t.integer  "citation_id"
     t.integer  "author_id"
-    t.datetime "created_at",   :null => false
-    t.datetime "updated_at",   :null => false
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
   end
 
-  add_index "reference_author_relationships", ["author_id"], :name => "index_reference_author_relationships_on_author_id"
-  add_index "reference_author_relationships", ["reference_id"], :name => "index_reference_author_relationships_on_reference_id"
+  add_index "citation_author_relationships", ["author_id"], :name => "index_reference_author_relationships_on_author_id"
+  add_index "citation_author_relationships", ["citation_id"], :name => "index_reference_author_relationships_on_reference_id"
 
-  create_table "references", :force => true do |t|
+  create_table "citations", :force => true do |t|
     t.text     "title"
     t.text     "abstract"
     t.text     "pubmed_url"
     t.text     "file_location"
-    t.string   "reference_type"
+    t.string   "citation_type"
     t.string   "journal"
     t.string   "issue"
     t.string   "volume"

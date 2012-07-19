@@ -1,0 +1,10 @@
+<h1>Citations#show</h1>
+<p>Find me in app/views/citations/show.html.erb</p>
+<p>Title: <%= @citation.title %></p>
+<p>Abstract: <%= @citation.abstract %></p>
+<p>Authors: <% if @citation.authors.any? %>
+<%= @citation.author_list() %>
+<% end %>
+<% if @citation.citation_type == "journal" %>
+<p>Journal: <%= @citation.journal %></p>
+<% end %>
