@@ -6,9 +6,9 @@ describe ReferencesController do
   describe "GET 'show'" do
   
     before(:each) do
-      @user = Factory(:user)
+      @user = FactoryGirl.create(:user)
       test_sign_in(@user)
-      @reference = Factory(:reference)
+      @reference = FactoryGirl.create(:reference)
     end
     
     it "should be successful" do
@@ -36,14 +36,14 @@ describe ReferencesController do
   describe "GET 'show' for journal articles" do
     
     before(:each) do
-      @user = Factory(:user)
+      @user = FactoryGirl.create(:user)
       test_sign_in(@user)
-      @reference = Factory(:reference)
-      @author = Factory(:author)
+      @reference = FactoryGirl.create(:reference)
+      @author = FactoryGirl.create(:author)
       #@reference_author_relationship = 
       #  @reference.reference_author_relationships.build(:author_id => @author.id,
       #                                            :reference_id => @reference.id)
-      @relationship = Factory(:reference_author_relationship)
+      @relationship = FactoryGirl.create(:reference_author_relationship)
     end
     
     it "should have the right reference journal" do
@@ -54,7 +54,7 @@ describe ReferencesController do
     it "should have an author list" do
       get :show, :id => @reference
       response.should have_selector("p", :content => @author.name)
-      #Technically, this currenty only looks for a single author and not
+      #Technically, this currently only looks for a single author and not
       #an entire list of authors
     end
     
@@ -63,14 +63,19 @@ describe ReferencesController do
  describe "GET 'index'" do
   
     before(:each) do
-      @user = Factory(:user)
+      @user = FactoryGirl.create(:user)
       test_sign_in(@user)
-      @reference = Factory(:reference)
+      @reference = FactoryGirl.create(:reference)
     end
     
     it "should be successful" do
       get :index
       response.should be_success
+    end
+    
+    it "should return the right reference, given a title" do
+      get :index, :search => @reference.title, :search_method => "title_or_abstract"
+      response.should have_selector("td", :content => @reference.title)
     end
     
   end

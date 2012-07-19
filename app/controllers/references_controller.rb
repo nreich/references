@@ -1,7 +1,7 @@
 class ReferencesController < ApplicationController
   
   def index
-    @references = Reference.search(params[:search])
+    @references = Reference.search(params[:search], params[:search_method])
   end
 
   def show

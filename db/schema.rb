@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120325211848) do
+ActiveRecord::Schema.define(:version => 20120629030805) do
 
   create_table "authors", :force => true do |t|
     t.string   "name"
@@ -24,7 +24,6 @@ ActiveRecord::Schema.define(:version => 20120325211848) do
   create_table "reference_author_relationships", :force => true do |t|
     t.integer  "reference_id"
     t.integer  "author_id"
-    t.integer  "author_order"
     t.datetime "created_at",   :null => false
     t.datetime "updated_at",   :null => false
   end
@@ -33,22 +32,23 @@ ActiveRecord::Schema.define(:version => 20120325211848) do
   add_index "reference_author_relationships", ["reference_id"], :name => "index_reference_author_relationships_on_reference_id"
 
   create_table "references", :force => true do |t|
-    t.string   "title"
-    t.string   "abstract"
-    t.string   "pubmed_url"
-    t.string   "file_location"
+    t.text     "title"
+    t.text     "abstract"
+    t.text     "pubmed_url"
+    t.text     "file_location"
     t.string   "reference_type"
-    t.date     "year"
     t.string   "journal"
     t.string   "issue"
     t.string   "volume"
     t.string   "pages"
-    t.string   "conference"
+    t.text     "conference"
     t.string   "patent_assignee"
     t.string   "patent_number"
     t.string   "publisher"
     t.datetime "created_at",      :null => false
     t.datetime "updated_at",      :null => false
+    t.string   "publish_year"
+    t.text     "author_list"
   end
 
   create_table "sessions", :force => true do |t|

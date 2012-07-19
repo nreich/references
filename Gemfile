@@ -5,7 +5,10 @@ gem 'rails', '3.2.1'
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 
-gem 'mysql'
+# Added to fix issue with not being able to find a javascript runtime
+gem 'execjs'
+
+gem 'mysql2'
 gem 'sqlite3'
 #gem 'enum_column3'
 gem 'ZenTest'
@@ -38,7 +41,7 @@ gem 'jquery-rails'
 # gem 'capistrano'
 
 # To use debugger
-gem 'ruby-debug19', :require => 'ruby-debug'
+#gem 'ruby-debug19', :require => 'ruby-debug'
 
 # Development and testings gems
 group :development do

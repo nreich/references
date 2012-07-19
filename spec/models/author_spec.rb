@@ -5,7 +5,7 @@ describe Author do
   describe "relationship with references" do
   
     before(:each) do
-      @author = Factory(:author)
+      @author = FactoryGirl.create(:author)
     end
     
     it "should have a reference_author_relationships method" do

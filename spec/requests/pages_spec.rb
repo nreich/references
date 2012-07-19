@@ -5,7 +5,7 @@ describe "Pages" do
   describe "when logged in" do
       
     before(:each) do
-      @user = Factory(:user)
+      @user = FactoryGirl.create(:user)
       visit sign_in_path
       fill_in :email,    :with => @user.email
       fill_in :password, :with => @user.password
@@ -25,10 +25,11 @@ describe "Pages" do
                                 :content => "Ardelyx Reference Navigator | Home")
       end
       
-      it "should have a references title search" do
+      it "should have a title/abstract search form" do
         get '/'
-        response.should have_selector("label", :content => "Title")
+        response.should have_selector("form", :content => "Title")
       end
+      
       
     end
     

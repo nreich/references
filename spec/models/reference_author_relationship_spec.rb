@@ -3,8 +3,8 @@ require 'spec_helper'
 describe ReferenceAuthorRelationship do
   
   before(:each) do
-    @reference = Factory(:reference)
-    @author = Factory(:author)
+    @reference = FactoryGirl.create(:reference)
+    @author = FactoryGirl.create(:author)
       
     @reference_author_relationship = 
     @reference.reference_author_relationships.build(:author_id => @author.id,
@@ -32,3 +32,14 @@ describe ReferenceAuthorRelationship do
   end
   
 end
+# == Schema Information
+#
+# Table name: reference_author_relationships
+#
+#  id           :integer(4)      not null, primary key
+#  reference_id :integer(4)
+#  author_id    :integer(4)
+#  created_at   :datetime        not null
+#  updated_at   :datetime        not null
+#
+
