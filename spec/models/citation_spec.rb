@@ -18,6 +18,23 @@ describe Citation do
   
   end
   
+  describe "comment associations" do
+    
+    before(:each) do
+      @comment1 = FactoryGirl.create(:comment, :citation => @citation, :created_at => 1.hour.ago)
+      @comment2 = FactoryGirl.create(:comment, :citation => @citation, :created_at => 1.day.ago)
+    end
+    
+    it "should have a comments attribute" do
+      @citation.should respond_to(:comments)
+    end
+    
+    it "should have the right comments order" do
+      @citation.comments.should == [@comment2, @comment1]
+    end
+    
+  end
+  
   
 end
 # == Schema Information

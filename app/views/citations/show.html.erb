@@ -1,10 +1,18 @@
 <h1>Citations#show</h1>
 <p>Find me in app/views/citations/show.html.erb</p>
+<p>Citation ID: <%= @citation.id %></p>
 <p>Title: <%= @citation.title %></p>
 <p>Abstract: <%= @citation.abstract %></p>
-<p>Authors: <% if @citation.authors.any? %>
-<%= @citation.author_list() %>
-<% end %>
+<p>Authors: <%= @citation.author_list() %>
 <% if @citation.citation_type == "journal" %>
 <p>Journal: <%= @citation.journal %></p>
+<% end %>
+<p></p>
+<p>Comments:</p>
+<%@citation.comments.each do |comment|%>
+	<% unless @citation.comments.nil? %>
+		<p>Comment Author: <%= comment.user.first_name + " " + comment.user.last_name %> </p>
+		<p>Comment Creation Date: <%= time_ago_in_words(comment.created_at)%> ago</p>
+		<p><%= comment.content %></p>
+	<% end %>
 <% end %>

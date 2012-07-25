@@ -1,7 +1,7 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery
   include SessionsHelper
-  before_filter :require_signed_in
+  before_filter :require_signed_in #Prevents any actions from being taken unless user signed in
   
 private
 

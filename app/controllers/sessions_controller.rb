@@ -1,5 +1,5 @@
 class SessionsController < ApplicationController
-skip_before_filter :require_signed_in
+skip_before_filter :require_signed_in #User does not need to be logged in to create a session (nor could they)
   def new
     @title = "Sign In"
   end

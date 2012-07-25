@@ -6,6 +6,7 @@ References::Application.routes.draw do
   resources :users
   resources :citations
   resources :sessions, :only => [:new, :create, :destroy]
+  resources :comments, :only => [:create, :destroy]
 
   match '/sign_up', :to => 'users#new'
   match '/sign_in', :to => 'sessions#new'

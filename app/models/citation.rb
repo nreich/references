@@ -2,6 +2,7 @@ class Citation < ActiveRecord::Base
 
 has_many :citation_author_relationships, :foreign_key => "citation_id"  #"author_id"
 has_many :authors, :through => :citation_author_relationships
+has_many :comments
    
   def self.search(search, method)
     if search

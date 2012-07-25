@@ -1,9 +1,9 @@
 FactoryGirl.define do
   
   factory :user do
-    first_name             "example"
+    sequence(:first_name)  {|n| "example#{n}" }
     last_name              "user"
-    email                  "example@ardelyx.com"
+    sequence(:email)       {|n|"example#{n}@ardelyx.com" }
     password               "foobar"
     password_confirmation  "foobar"
   end
@@ -33,6 +33,12 @@ FactoryGirl.define do
   factory :citation_author_relationship do
     citation_id 1
     author_id    1
+  end
+  
+  factory :comment do
+    content "Sample comment content"
+    association :user
+    association :citation
   end
 
 end

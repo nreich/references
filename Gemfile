@@ -41,7 +41,7 @@ gem 'jquery-rails'
 # gem 'capistrano'
 
 # To use debugger
-#gem 'ruby-debug19', :require => 'ruby-debug'
+gem 'ruby-debug19', :require => 'ruby-debug'
 
 # Development and testings gems
 group :development do
@@ -52,7 +52,7 @@ end
 group :test do
   gem 'rspec'
   #gem 'spork', '~> 1.0rc'
-  gem 'spork'
+  gem 'spork', '~> 0.9.2'
   gem 'webrat'
   gem 'factory_girl_rails'
 end

@@ -14,6 +14,8 @@ class User < ActiveRecord::Base
   attr_accessor :password
   attr_accessible :first_name, :last_name, :email, :password, :password_confirmation
   
+  has_many :comments
+  
   email_regex = /\A[\w\-.]+@ardelyx.com/i
   
   validates :first_name, :presence => true,

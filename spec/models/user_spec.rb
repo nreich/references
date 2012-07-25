@@ -126,4 +126,16 @@ describe User do
     end
   end
   
+  describe "comment associations" do
+    
+    before(:each) do
+      @user = User.create(@attr)
+    end
+    
+    it "should have a comments attribute" do
+      @user.should respond_to(:comments)
+    end
+    
+  end
+  
 end
