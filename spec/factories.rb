@@ -40,5 +40,9 @@ FactoryGirl.define do
     association :user
     association :citation
   end
+  
+  factory :project do
+    name "test Project"
+  end
 
 end

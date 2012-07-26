@@ -39,7 +39,7 @@ describe Comment do
     
   end
   
-  describe "user assosciations" do
+  describe "user associations" do
     
     before(:each) do
       @comment = @citation.comments.build(@attr)

@@ -13,7 +13,9 @@ gem 'sqlite3'
 #gem 'enum_column3'
 gem 'ZenTest'
 gem 'autotest-rails-pure'
-
+gem 'rack-mini-profiler'
+gem 'thin'
+gem 'eventmachine', '~> 1.0.0.rc.4'
 # Gems used only for assets and not required
 # in production environments by default.
 group :assets do

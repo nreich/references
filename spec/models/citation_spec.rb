@@ -35,6 +35,20 @@ describe Citation do
     
   end
   
+  describe "project associations" do
+    
+    it "should have a project attribute" do
+      @citation.should respond_to(:projects)
+    end
+    
+    it "should have the right associated projects" do
+      @project = FactoryGirl.create(:project)
+      @citation.projects << @project
+      @citation.projects.exists?(@project.id).should be_true
+    end
+    
+  end
+  
   
 end
 # == Schema Information
