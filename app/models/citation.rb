@@ -4,6 +4,7 @@ has_many :citation_author_relationships, :foreign_key => "citation_id"  #"author
 has_many :authors, :through => :citation_author_relationships
 has_many :comments
 has_and_belongs_to_many :projects
+has_and_belongs_to_many :categories
    
   def self.search(search, method)
     if search

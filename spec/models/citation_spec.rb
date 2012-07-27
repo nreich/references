@@ -49,6 +49,20 @@ describe Citation do
     
   end
   
+  describe "category associations" do
+    
+    it "should have a category attribute" do
+      @citation.should respond_to(:categories)
+    end
+    
+    it "should have the right associated category" do
+      @category = FactoryGirl.create(:category)
+      @citation.categories << @category
+      @citation.categories.exists?(@category.id).should be_true
+    end
+    
+  end
+  
   
 end
 # == Schema Information

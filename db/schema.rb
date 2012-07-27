@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120726224622) do
+ActiveRecord::Schema.define(:version => 20120727194305) do
 
   create_table "authors", :force => true do |t|
     t.string   "name"
@@ -20,6 +20,20 @@ ActiveRecord::Schema.define(:version => 20120726224622) do
   end
 
   add_index "authors", ["name"], :name => "index_authors_on_name", :unique => true
+
+  create_table "categories", :force => true do |t|
+    t.integer  "project_id"
+    t.string   "name"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  add_index "categories", ["name", "project_id"], :name => "index_categories_on_name_and_project_id", :unique => true
+
+  create_table "categories_citations", :id => false, :force => true do |t|
+    t.integer "category_id"
+    t.integer "citation_id"
+  end
 
   create_table "citation_author_relationships", :force => true do |t|
     t.integer  "citation_id"

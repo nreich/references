@@ -44,5 +44,10 @@ FactoryGirl.define do
   factory :project do
     name "test Project"
   end
+  
+  factory :category do
+    name "sample category"
+    association :project
+  end
 
 end

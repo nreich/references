@@ -44,7 +44,38 @@ describe Project do
         @project.citations << @citation
         @project.citations.exists?(@citation.id).should be_true    
       end
-    end 
+    end
+    
+    describe "with categories" do
+      
+      it "should have a category attribute" do
+        @project.should respond_to(:categories)
+      end
+      
+      it "should have the right associated category" do
+        @category = FactoryGirl.create(:category, :project => @project)
+        @project.categories << @category
+        @project.categories.exists?(@category.id).should be_true
+      end
+      
+      it "should not allow more than one category of the same name" do
+        @category1 = FactoryGirl.create(:category, :project => @project)
+        @category2 = FactoryGirl.build(:category, :project => @project)
+        @category2.should_not be_valid
+      end
+      
+    end
+     
   end
   
 end
+# == Schema Information
+#
+# Table name: projects
+#
+#  id         :integer(4)      not null, primary key
+#  name       :string(255)
+#  created_at :datetime        not null
+#  updated_at :datetime        not null
+#
+
