@@ -26,7 +26,7 @@ describe ProjectsController do
     describe "success" do
       
       before(:each) do
-        @attr = {:name => "sampel project"}
+        @attr = {:name => "sample project"}
       end
       
       it "should create a new project" do

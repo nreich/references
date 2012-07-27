@@ -8,6 +8,7 @@ References::Application.routes.draw do
   resources :sessions, :only => [:new, :create, :destroy]
   resources :comments, :only => [:create, :destroy]
   resources :projects, :only => [:new, :create]
+  resources :categories, :only => [:new, :create]
 
   match '/sign_up', :to => 'users#new'
   match '/sign_in', :to => 'sessions#new'
