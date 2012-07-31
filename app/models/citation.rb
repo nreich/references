@@ -31,7 +31,7 @@ has_and_belongs_to_many :categories
       
     end
   end
-  
+ 
 end
 # == Schema Information
 #

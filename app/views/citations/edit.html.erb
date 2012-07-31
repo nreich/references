@@ -1,0 +1,7 @@
+Edit Relations for reference#<%= @citation.id%>:<br>
+<p>Add to existing project:</p>
+<%= form_for @citation do |f|%>
+	<%= f.label :project %><br>
+	<%= collection_select :project, :id, Project.all, :id, :name, :include_blank => "Select a project" %>
+	<%= f.submit "submit" %>
+<% end %>

@@ -7,8 +7,8 @@ References::Application.routes.draw do
   resources :citations
   resources :sessions, :only => [:new, :create, :destroy]
   resources :comments, :only => [:create, :destroy]
-  resources :projects, :only => [:new, :create]
-  resources :categories, :only => [:new, :create]
+  resources :projects
+  resources :categories
 
   match '/sign_up', :to => 'users#new'
   match '/sign_in', :to => 'sessions#new'
