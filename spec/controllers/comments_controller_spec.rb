@@ -31,17 +31,17 @@ describe CommentsController do
         @citation = FactoryGirl.create(:citation)
         #passed is an empty comment, which should result in a failed comment creation
         #@attr = FactoryGirl.attributes_for(:comment, :citation_id => @citation.id)
-        @attr = {:content => ""}
+        @attr = {:content => "", :citation_id => @citation.id}
       end
       
       it "should not create a comment" do
         lambda do
-          post :create, :content => @attr, :citation_id => @citation.id
+          post :create, :comment => @attr
         end.should_not change(Comment, :count)
       end
       
       it "should redirect back to the citation" do
-        post :create, :content => @attr, :citation_id => @citation.id
+        post :create, :comment => @attr
         response.should redirect_to(@citation)
       end
       
@@ -54,12 +54,12 @@ describe CommentsController do
         @citation = FactoryGirl.create(:citation)
         #passed is an empty comment, which should result in a failed comment creation
         #@attr = FactoryGirl.attributes_for(:comment, :citation_id => @citation.id)
-        @attr = {:content => "Sample comment text"}
+        @attr = {:content => "Sample comment text", :citation_id => @citation.id}
       end
       
       it "should create a new comment" do
         lambda do
-          post :create, :content => @attr, :citation_id => @citation.id
+          post :create, :comment => @attr
         end.should change(Comment, :count).by(1)
       end
       

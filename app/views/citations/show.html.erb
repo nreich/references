@@ -33,6 +33,14 @@
 <br>
 
 <div class="comments">
+	Add a comment:
+	<% @comment = Comment.new%>
+	<%= form_for @comment do |f|%>
+		<%= f.label :content%>
+		<%= f.text_field :content %>
+		<%= f.hidden_field :citation_id, :value => @citation.id %>
+		<%= f.submit "submit" %>
+	<% end %>
 	<p>Comments:</p>
 	<%@citation.comments.each_with_index do |comment, index|%>
 		<% unless @citation.comments.nil? %>
