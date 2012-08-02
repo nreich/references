@@ -5,3 +5,10 @@ Edit Relations for reference#<%= @citation.id%>:<br>
 	<%= collection_select :project, :id, Project.all, :id, :name, :include_blank => "Select a project" %>
 	<%= f.submit "submit" %>
 <% end %>
+
+<p>Add to existing category:</p>
+<%= form_for @citation do |f|%>
+	<%= f.label :category %><br>
+	<%= collection_select :category, :id, Category.all, :id, :name, :include_blank => "Select a category" %>
+	<%= f.submit "submit" %>
+<% end %>

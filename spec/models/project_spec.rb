@@ -53,17 +53,13 @@ describe Project do
       end
       
       it "should have the right associated category" do
-        @category = FactoryGirl.create(:category, :project => @project)
-        @project.categories << @category
+        @citation = FactoryGirl.create(:citation)
+        @category = FactoryGirl.create(:category)
+        @citation.categories << @category
+        @citation.projects << @project
         @project.categories.exists?(@category.id).should be_true
       end
-      
-      it "should not allow more than one category of the same name" do
-        @category1 = FactoryGirl.create(:category, :project => @project)
-        @category2 = FactoryGirl.build(:category, :project => @project)
-        @category2.should_not be_valid
-      end
-      
+           
     end
      
   end

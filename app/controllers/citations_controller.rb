@@ -18,6 +18,10 @@ class CitationsController < ApplicationController
       @project = Project.find(params[:project][:id])
       @citation.projects << @project
       redirect_to @citation
+    elsif params[:category].nil? == false
+      @category = Category.find(params[:category][:id])
+      @citation.categories << @category
+      redirect_to @citation
     else
       render 'edit'
     end

@@ -1,8 +1,8 @@
 class CategoriesController < ApplicationController
   
   def create
-    @project = Project.find(params[:project_id])
-    @category = @project.categories.build(params[:category])
+    @citation = Citation.find(params[:citation_id])
+    @category = @citation.categories.build(params[:category])
     if @category.save
       
     else

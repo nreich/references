@@ -7,24 +7,28 @@
 	<b>Citation:</b> Need to add function to build this<br>
 	<b>Abstract:</b> <%= @citation.abstract%><br>
 	<br>
-	<p>This reference has been tagged in:<% if @citation.projects.nil?%><%= "no projects"%></p>
+	<p>Tagged projects: <% if @citation.projects.nil?%><%= "none"%>
 	<% else %>
-	<% @citation.projects.each do |p|%>
-		<%=raw "<p>" + "Project " + link_to(p.name, project_path(p)) + " in categories:" %>
-		<% @citation.categories.each_with_index do |c, index| %>
-			<% if p.categories.include?(c) %>
-				<% unless index == @citation.categories.size() - 1 %>
-					<%= c.name + "," %>
-				<% else %>
-					<%=raw c.name + "</p>"%>
-				<% end %>
+		<% @citation.projects.each_with_index do |project, index|%>
+			<% if index == @citation.projects.size() - 1 %>
+				<%= link_to(project.name, project_path(project)) + "." %>
+			<% else %>
+				<%= link_to(project.name, project_path(project)) + ", " %>
 			<% end %>
 		<% end %>
-	<% end %>
-	<% end %>
+	<% end %> </p>
+	<p>Tagged categories: <% if @citation.categories.nil?%><%= "none"%>
+	<% else %>
+		<% @citation.categories.each_with_index do |category, index| %>
+			<% if index == @citation.categories.size() - 1 %>
+				<%= link_to(category.name, category_path(category)) + "." %>
+			<% else %>
+				<%= link_to(category.name, category_path(category)) + ", " %>
+			<% end %>
+		<% end %>
+	<% end %> </p>	
 			
-	<p><%= link_to "Add a project", edit_citation_path(@citation) %> to this citation</p>
-	
+	<p><%= link_to "Edit", edit_citation_path(@citation) %> projects and categories of this citation</p>
 	
 <br>
 
