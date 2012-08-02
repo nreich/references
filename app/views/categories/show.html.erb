@@ -1,0 +1,4 @@
+<p>Articles in this category:</p>
+<% @category.citations.each do |citation| %>
+	<%=raw "<p>" + link_to(citation.title, citation_path(citation)) + "</p>" %>
+<% end %>

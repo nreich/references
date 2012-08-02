@@ -1,1 +1,4 @@
-find me in views#projects
+<p>Articles in this project:</p>
+<% @project.citations.each do |citation| %>
+	<%=raw "<p>" + link_to(citation.title, citation_path(citation)) + "</p>" %>
+<% end %>
