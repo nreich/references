@@ -1,4 +1,8 @@
 class ProjectsController < ApplicationController
+  
+  def new
+    @project = Project.new
+  end
     
   def create
     @project = Project.new(params[:project])
@@ -7,7 +11,7 @@ class ProjectsController < ApplicationController
   end
   
   def index
-    #@project = Project.find(:all)
+    @project = Project.find(:all)
   end
   
   def show
