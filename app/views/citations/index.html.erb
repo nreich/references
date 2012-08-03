@@ -1,35 +1,3 @@
-<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.js"></script>
-<script type="text/javascript">
-
-$(document).ready(function(){
-    $("div#abstract_text").hide();
-    
-    $("#abstract").mouseover(function(){
-        $("#abstract_text",this).show();
-    }).mouseout(function(){
-        $("#abstract_text",this).hide();
-    });
-    
-});
-</script>
-
-<style>
-div#abstract_text{
-    width:600px;
-    height:400px;
-    background-color:#E8E8E8;
-    position:fixed;
-    top:200px;
-    left:500px;
-    padding:5px;
-    
-}
-
-#abstract{
-	cursor:pointer;
-}
-</style>
-
 <h1>Citations#index</h1>
 <p>Find me in app/views/citations/index.html.erb</p>
 
@@ -55,7 +23,7 @@ div#abstract_text{
 	    	</td>
 	    	<td id="abstract">
 	    		<% unless ref.abstract.nil? %> 
-		    		<%=raw "expand<div id=\"abstract_text\">" + ref.abstract + "</div>" %>
+		    		<%= @citation.abstract %>
 		    	<% else %>
 		    		<%= "no abstract"%>
 		    	<% end %>
