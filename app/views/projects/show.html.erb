@@ -1,4 +1,38 @@
-<p>Articles in this project:</p>
-<% @project.citations.each do |citation| %>
-	<%=raw "<p>" + link_to(citation.title, citation_path(citation)) + "</p>" %>
-<% end %>
+<script>
+	$(function() {
+		$( '#tabs' ).tabs();
+	});
+</script>
+
+<h2><%= @project.name.capitalize %> has citations in these categories:</h2>
+<div id="tabs">
+	<ul>
+		<li><a href="#tabs-1">All</a></li>
+		<% @categories.each_with_index do |category, index|%>
+			<%=raw "<li><a href=\"#tabs-" + (index+2).to_s + "\">" + category.name.capitalize + "</a></li>"%>
+		<% end %>
+	</ul>
+	<div id="tabs-1">
+		<h3>Citations:</h3>
+		<% @citations.each do |citation| %>
+			<%=raw "<p>" + link_to(citation.title, citation_path(citation)) + "<p>" %>
+		<% end %>
+	</div>
+	<% @categories.each_with_index do |category, index|%>
+		<%=raw "<div id=\"tabs-" + (index+2).to_s + "\">" %>
+		<%=raw "<h3>Citations:</h3>" %>
+		<% @citations.each do |citation|%>
+			<% if category.citations.include?(citation)%>
+				<%=raw "<p>" + link_to(citation.title, citation_path(citation)) + "<p>" %>
+			<% end %>
+		<% end %>
+		<%=raw "</div>"%>
+	<%end %>
+	
+</div>
+
+
+
+
+
+

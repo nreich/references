@@ -12,6 +12,8 @@ class ProjectsController < ApplicationController
   
   def show
     @project = Project.find(params[:id])
+    @categories = @project.categories.uniq
+    @citations = @project.citations
   end
   
 end
