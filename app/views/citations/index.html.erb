@@ -8,7 +8,6 @@
 			<th id="ref_table_abstract_head">Abstract</th>
 			<th id="ref_table_author_head">Authors</th>
 			<th id="ref_table_journal_head">Citation</th>
-			<th id="ref_table_patent_head">Patent Number</th>
 		</tr>
 	</thead>
 	<tbody>
@@ -23,7 +22,7 @@
 	    	</td>
 	    	<td id="abstract">
 	    		<% unless ref.abstract.nil? %> 
-		    		<%= @citation.abstract %>
+		    		<%= ref.abstract %>
 		    	<% else %>
 		    		<%= "no abstract"%>
 		    	<% end %>
@@ -48,11 +47,6 @@
 		    		<% end %>
 	    		<% end %>
 	    	</td>
-		    <td>
-		    	<% unless ref.patent_number.nil? %> 
-		    	<%= ref.patent_number %>
-		    	<% end %>
-		    </td>
 		  </tr>
 		<% end %>
 	</tbody>
