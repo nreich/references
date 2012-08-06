@@ -15,13 +15,22 @@ class CitationsController < ApplicationController
   def update
     @citation = Citation.find(params[:id])
     if params[:project].nil? == false
-      @project = Project.find(params[:project][:id])
-      @citation.projects << @project
-      redirect_to @citation
+      if @project = Project.find_by_id(params[:project][:id])
+        @citation.projects << @project
+        redirect_to @citation
+      else
+        flash[:failure] = "Failure to update projects: you must select a valid project to add."
+        render 'edit'
+      end
     elsif params[:category].nil? == false
-      @category = Category.find(params[:category][:id])
-      @citation.categories << @category
-      redirect_to @citation
+      if @category = Category.find_by_id(params[:category][:id])
+        @citation.categories << @category
+        redirect_to @citation
+      else
+        flash[:failure] = "Failure to update categories: you must select a valid category to add."
+        render 'edit'
+      end
+      
     else
       render 'edit'
     end

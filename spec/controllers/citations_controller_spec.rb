@@ -106,13 +106,27 @@ describe CitationsController do
         
         before(:each) do
           @project = FactoryGirl.create(:project)
+          
         end
         
         #Since the citation itself is not being changes, just the projects/categories
-        #this test is making sure that if neither of those is updated, it will rerender edit
+        #this set of tests is making sure that if the blank entry is selected from dropdown list
+        #that everything is handled properly
+        
         it "should render the 'edit' page" do
-          put :update, :id => @citation
+          put :update, :id => @citation, :project => {:id => nil, :name => ""}
           response.should render_template('edit')
+        end
+        
+        it "should flash a failure method" do
+          put :update, :id => @citation, :project => {:id => nil, :name => ""}
+          flash[:failure].should =~ /failure to update projects:/i
+        end
+        
+        it "should not change the number of projects the citation belongs to" do
+          lambda do
+            put :update, :id => @citation, :project => {:id => nil, :name => ""}
+          end.should_not change(@citation.projects, :count)
         end
         
       end
@@ -136,6 +150,63 @@ describe CitationsController do
         
         it "should redirect to the citation show page" do
           put :update, :id => @citation, :project => {:id => @project.id, :name => @project.name}
+          response.should redirect_to(citation_path(@citation))
+        end
+        
+      end
+      
+    end
+    
+    describe "citation" do
+      
+      describe "failure" do
+        
+        before(:each) do
+          @category = FactoryGirl.create(:category)
+          
+        end
+        
+        #Since the citation itself is not being changes, just the projects/categories
+        #this set of tests is making sure that if the blank entry is selected from dropdown list
+        #that everything is handled properly
+        
+        it "should render the 'edit' page" do
+          put :update, :id => @citation, :category => {:id => nil, :name => ""}
+          response.should render_template('edit')
+        end
+        
+        it "should flash a failure method" do
+          put :update, :id => @citation, :category => {:id => nil, :name => ""}
+          flash[:failure].should =~ /failure to update categories:/i
+        end
+        
+        it "should not change the number of categories the citation belongs to" do
+          lambda do
+            put :update, :id => @citation, :category => {:id => nil, :name => ""}
+          end.should_not change(@citation.categories, :count)
+        end
+        
+      end
+      
+      describe "success" do
+        
+        before(:each) do
+          @category = FactoryGirl.create(:category)
+        end
+        
+        it "should create a new category_citation relationship" do
+          lambda do
+            put :update, :id => @citation, :category => {:id => @category.id, :name => @category.name}  
+          end.should change(@citation.categories, :count).by(1)
+        end
+        
+        it "should create a relatioship to the right project" do
+          put :update, :id => @citation, :category => {:id => @category.id, :name => @category.name}
+          @citation.categories.include?(@category).should be_true
+        end
+        
+        it "should redirect to the citation show page" do
+          put :update, :id => @citation, :category => {:id => @category.id, :name => @category.name}
           response.should redirect_to(citation_path(@citation))
         end
         

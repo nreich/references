@@ -1,14 +1,13 @@
-Edit Relations for reference#<%= @citation.id%>:<br>
-<p>Add to existing project:</p>
+<h3>Edit relations for reference# <%= @citation.id%>:</h3>
+
 <%= form_for @citation do |f|%>
 	<%= f.label :project %><br>
-	<%= collection_select :project, :id, Project.all, :id, :name, :include_blank => "Select a project" %>
-	<%= f.submit "submit" %>
+	<%= collection_select :project, :id, Project.all-@citation.projects, :id, :name, :include_blank => "Select a project" %>
+	<%= f.submit "add" %>
 <% end %>
 
-<p>Add to existing category:</p>
 <%= form_for @citation do |f|%>
 	<%= f.label :category %><br>
-	<%= collection_select :category, :id, Category.all, :id, :name, :include_blank => "Select a category" %>
-	<%= f.submit "submit" %>
+	<%= collection_select :category, :id, Category.all-@citation.categories, :id, :name, :include_blank => "Select a category" %>
+	<%= f.submit "add" %>
 <% end %>
