@@ -1,13 +1,11 @@
-<div class="title">
+<section id="citation">
 	<h3><%= @citation.title %></h3>
-</div>
-<div class="main">
 	<b>Citation ID:</b> <%= @citation.id %><br>
 	<b>Authors:</b> <%= @citation.author_list%><br>
 	<b>Citation:</b> Need to add function to build this<br>
 	<b>Abstract:</b> <%= @citation.abstract%><br>
 	<br>
-	<p>Tagged projects: <% if @citation.projects.nil?%><%= "none"%>
+	<p><b>Tagged projects: </b><% if @citation.projects.nil?%><%= "none"%>
 	<% else %>
 		<% @citation.projects.each_with_index do |project, index|%>
 			<% if index == @citation.projects.size() - 1 %>
@@ -17,7 +15,7 @@
 			<% end %>
 		<% end %>
 	<% end %> </p>
-	<p>Tagged categories: <% if @citation.categories.nil?%><%= "none"%>
+	<p><b>Tagged categories: </b><% if @citation.categories.nil?%><%= "none"%>
 	<% else %>
 		<% @citation.categories.each_with_index do |category, index| %>
 			<% if index == @citation.categories.size() - 1 %>
@@ -28,12 +26,12 @@
 		<% end %>
 	<% end %> </p>	
 			
-	<p><%= link_to "Edit", edit_citation_path(@citation) %> projects and categories of this citation</p>
+	<p><%= link_to "Add", edit_citation_path(@citation) %> projects and categories of this citation</p>
 	
-<br>
+</section>
 
-<div class="comments">
-	Add a comment:
+<section id="add_comment">
+	<h3>Add a comment:</h3>
 	<% @comment = Comment.new%>
 	<%= form_for @comment do |f|%>
 		<%= f.label :content%>
@@ -41,18 +39,20 @@
 		<%= f.hidden_field :citation_id, :value => @citation.id %>
 		<%= f.submit "submit" %>
 	<% end %>
-	<p>Comments:</p>
+</section>
+<section id="comments">
+	<h3>Comments:</h3>
 	<%@citation.comments.each_with_index do |comment, index|%>
 		<% unless @citation.comments.nil? %>
 			<% if index.odd? %>
-				<%=raw "<div id=\"comment_odd\"" %>
+				<%=raw "<div class=\"comment_odd\">" %>
 			<% else %>
-				<%=raw "<div id=\"comment_even\"" %>
+				<%=raw "<div class=\"comment_even\">" %>
 			<% end %>
-			<p>Comment Author: <%= comment.user.first_name + " " + comment.user.last_name %> </p>
-			<p>Comment Creation Date: <%= time_ago_in_words(comment.created_at)%> ago</p>
-			<p><%= comment.content %></p>
+			<p><b><%= comment.user.first_name + " " + comment.user.last_name %></b> wrote on
+				<%= comment.created_at %>:</p>
+			<p class="comment_content"><%= comment.content %></p>
 			<%=raw "</div>"%>
 		<% end %>
 	<% end %>
-</div>
+</section>

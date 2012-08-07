@@ -1,15 +1,18 @@
 <header>
-  <nav class="round">
-    <ul>
-      <li><%= link_to "Home", root_path %></li>
-      <li><%= link_to "Sign Up", sign_up_path %></li>
-      <% if current_user %>
-        <li><%= link_to "Sign Out", sign_out_path %></li>
-        <li><%= "You are logged in as #{current_user.first_name} 
-        #{current_user.last_name}" %></li>
-      <% else %>
-        <li><%= link_to "Sign In", sign_in_path %></li>
-      <% end %>      
-    </ul> 
-  </nav>
+	<div class="header">
+		<h1 class="title">Ardelyx Reference Navigator</h2>
+		<nav class="round">
+			<ul>
+	  		<li><%= link_to "Home", root_path %></li>  
+	  		<% if current_user %>
+					<li><%= link_to "Sign Out", sign_out_path %></li>
+					<li></li>
+					<li><%= "Logged in as #{current_user.first_name} #{current_user.last_name}" %></li>
+	  		<% else %>
+					<li><%= link_to "Sign Up", sign_up_path %></li>
+					<li><%= link_to "Sign In", sign_in_path %></li>
+	  		<% end %>      
+			</ul> 
+	  </nav>
+  </div>
 </header>

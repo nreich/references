@@ -1,3 +1,4 @@
+<section>
 <h3>Edit relations for reference# <%= @citation.id%>:</h3>
 
 <%= form_for @citation do |f|%>
@@ -11,3 +12,4 @@
 	<%= collection_select :category, :id, Category.all-@citation.categories, :id, :name, :include_blank => "Select a category" %>
 	<%= f.submit "add" %>
 <% end %>
+</section>

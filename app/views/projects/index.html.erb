@@ -1,4 +1,5 @@
-<h2>Projects Index:</h2>
+<section>
+<h2>Projects:</h2>
 <ul>
 	<% @project.each do |p| %>
 		<%=raw "<li>" + link_to(p.name.capitalize, project_path(p)) + "</li>" %>
@@ -6,3 +7,4 @@
 </ul>
 
 <p><%= link_to "Add a new project", new_project_path %></p>
+</section>
