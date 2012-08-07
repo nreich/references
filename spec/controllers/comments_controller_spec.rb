@@ -45,6 +45,11 @@ describe CommentsController do
         response.should redirect_to(@citation)
       end
       
+      it "should flash a failure message" do
+        post :create, :comment => @attr
+        flash[:error].should =~ /comment not added: comments cannot be blank/i
+      end
+      
       
     end
     
@@ -61,6 +66,16 @@ describe CommentsController do
         lambda do
           post :create, :comment => @attr
         end.should change(Comment, :count).by(1)
+      end
+      
+      it "should redirect back to the citation" do
+        post :create, :comment => @attr
+        response.should redirect_to(@citation)
+      end
+      
+      it "should flash a success message" do
+        post :create, :comment => @attr
+        flash[:success].should =~ /your comment was added/i
       end
       
       #it "should redirect to the citation's 'show' page" do

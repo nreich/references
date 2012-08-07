@@ -3,11 +3,11 @@ require 'spec_helper'
 describe ProjectsController do
   render_views
 
-  describe "POST 'create'" do
-    
-    before(:each) do
+  before(:each) do
       @user = test_sign_in(FactoryGirl.create(:user))
-    end
+   end
+
+  describe "POST 'create'" do
     
     describe "failure" do
       
@@ -38,5 +38,6 @@ describe ProjectsController do
     end
     
   end
+    
 
 end

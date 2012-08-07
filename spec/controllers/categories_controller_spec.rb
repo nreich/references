@@ -21,6 +21,8 @@ describe CategoriesController do
           post :create, :category => @attr, :citation_id => @citation.id
         end.should_not change(Category, :count)
       end
+      
+
            
     end
     

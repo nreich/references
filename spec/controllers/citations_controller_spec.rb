@@ -31,6 +31,32 @@ describe CitationsController do
       response.should have_selector("div", :content => @citation.abstract)
     end
     
+    #Eventually need to readd author order and create this list on the fly so that it can link to the author
+    it "should have the right author list" do
+      get :show, :id => @citation
+      response.should have_selector("div", :content => @citation.author_list)
+    end
+    
+    it "should have a list the right list of projects" do
+      @project1 = FactoryGirl.create(:project)
+      @project2 = FactoryGirl.create(:project, :name => "project2")
+      @citation.projects << @project1
+      @citation.projects << @project2
+      get :show, :id => @citation
+      response.should have_selector("p", :content => @project1.name)
+      response.should have_selector("p", :content => @project2.name)
+    end
+    
+    it "should have a list the right list of categories" do
+      @category1 = FactoryGirl.create(:category)
+      @category2 = FactoryGirl.create(:category, :name => "category2")
+      @citation.categories << @category1
+      @citation.categories << @category2
+      get :show, :id => @citation
+      response.should have_selector("p", :content => @category1.name)
+      response.should have_selector("p", :content => @category2.name)
+    end
+    
   end
   
   describe "GET 'show' for journal articles" do
@@ -120,7 +146,7 @@ describe CitationsController do
         
         it "should flash a failure method" do
           put :update, :id => @citation, :project => {:id => nil, :name => ""}
-          flash[:failure].should =~ /failure to update projects:/i
+          flash[:error].should =~ /failure to update projects:/i
         end
         
         it "should not change the number of projects the citation belongs to" do
@@ -153,6 +179,11 @@ describe CitationsController do
           response.should redirect_to(citation_path(@citation))
         end
         
+        it "should flash a success message" do
+          put :update, :id => @citation, :project => {:id => @project.id, :name => @project.name}
+          flash[:success].should =~ /project added successfully/i
+        end
+        
       end
       
     end
@@ -177,7 +208,7 @@ describe CitationsController do
         
         it "should flash a failure method" do
           put :update, :id => @citation, :category => {:id => nil, :name => ""}
-          flash[:failure].should =~ /failure to update categories:/i
+          flash[:error].should =~ /failure to update categories:/i
         end
         
         it "should not change the number of categories the citation belongs to" do
@@ -208,6 +239,11 @@ describe CitationsController do
         it "should redirect to the citation show page" do
           put :update, :id => @citation, :category => {:id => @category.id, :name => @category.name}
           response.should redirect_to(citation_path(@citation))
+        end
+        
+        it "should flash a success message" do
+          put :update, :id => @citation, :category => {:id => @category.id, :name => @category.name}
+          flash[:success].should =~ /category added successfully/i
         end
         
       end
