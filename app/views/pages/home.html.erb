@@ -1,17 +1,46 @@
+<script>
+	$(function() {
+		$( '#tabs' ).tabs();
+	});
+</script>
 <section>
-<h2>Search references:</h2>
-<p>
-	<%= form_tag citations_path, :method => 'get' do%>
-    Title/Abstract Search: <%= text_field_tag :search, params[:search] %>
-    <%= hidden_field_tag :search_method, "title_or_abstract"%>
-    <%= submit_tag "Search", :name => nil %>
-	<% end %>
-</p>
-<p>
-	<%= form_tag citations_path, :method => 'get' do%>
-    Author Search: <%= text_field_tag :search, params[:search] %>
-    <%= hidden_field_tag :search_method, "author"%>
-    <%= submit_tag "Search", :name => nil %>
-	<% end %>
-</p>
+<div id="tabs">
+	<ul>
+		<li><a href="#tabs-1">Search</a></li>
+		<li><a href="#tabs-2">Projects</a></li>
+		<li><a href="#tabs-3">Newest Citations</a></li>
+	</ul>
+	<div id="tabs-1">
+		<h2>Search references:</h2>
+		<p>
+			<%= form_tag citations_path, :method => 'get' do%>
+		    Title/Abstract Search: <%= text_field_tag :search, params[:search] %>
+		    <%= hidden_field_tag :search_method, "title_or_abstract"%>
+		    <%= submit_tag "Search", :name => nil %>
+			<% end %>
+		</p>
+		<p>
+			<%= form_tag citations_path, :method => 'get' do%>
+		    Author Search: <%= text_field_tag :search, params[:search] %>
+		    <%= hidden_field_tag :search_method, "author"%>
+		    <%= submit_tag "Search", :name => nil %>
+			<% end %>
+		</p>
+	</div>	
+	<div id="tabs-2">
+		<ul>
+			<% @project.each do |p| %>
+				<%=raw "<li>" + link_to(p.name.capitalize, project_path(p)) + "</li>" %>
+			<% end %>
+		</ul>
+
+<p><%= link_to "Add a new project", new_project_path %></p>
+	</div>
+	<div id="tabs-3">
+		<ol>
+			<% @citation.each do |c| %>
+				<li><a href="<%= c.title %>"><%= c.title %></a></li>
+			<% end %>
+		</ol>
+	</div>
 </section>

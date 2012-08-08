@@ -12,7 +12,7 @@ class CategoriesController < ApplicationController
   end
   
   def index
-    
+    @category = Category.find(:all)
   end
   
   def show

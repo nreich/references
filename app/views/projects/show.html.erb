@@ -15,7 +15,7 @@
 	<div id="tabs-1">
 		<h3>Citations:</h3>
 		<% @citations.each do |citation| %>
-			<%=raw "<p>" + link_to(citation.title, citation_path(citation)) + "<p>" %>
+			<%=link_to(citation.title, citation_path(citation))%>
 			<% unless citation.comments.nil? %>	
 				<ul>
 				<% citation.comments.each do |comment| %>
@@ -31,7 +31,7 @@
 		<%=raw "<h3>Citations:</h3>" %>
 		<% @citations.each do |citation|%>
 			<% if category.citations.include?(citation)%>
-				<%=raw "<p>" + link_to(citation.title, citation_path(citation)) + "<p>" %>
+				<%=link_to(citation.title, citation_path(citation))%>
 			<% end %>
 		<% end %>
 		<%=raw "</div>"%>
