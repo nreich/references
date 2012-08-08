@@ -1,9 +1,11 @@
 <section id="citation">
 	<h3><%= @citation.title %></h3>
+	<div id="citation_info">
 	<b>Citation ID:</b> <%= @citation.id %><br>
 	<b>Authors:</b> <%= @citation.author_list%><br>
-	<b>Citation:</b> Need to add function to build this<br>
-	<b>Abstract:</b> <%= @citation.abstract%><br>
+	<b>Citation:</b> <%= render :partial => "reference_string" %><br>
+	<b>Abstract:</b> <%= @citation.abstract%><br>	
+	</div>
 	<br>
 	<p><b>Tagged projects: </b><% if @citation.projects.nil?%><%= "none"%>
 	<% else %>

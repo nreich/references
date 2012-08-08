@@ -59,29 +59,7 @@ describe CitationsController do
     
   end
   
-  describe "GET 'show' for journal articles" do
-    
-    before(:each) do
-      @user = FactoryGirl.create(:user)
-      test_sign_in(@user)
-      @citation = FactoryGirl.create(:citation)
-      @author = FactoryGirl.create(:author)
-      @relationship = FactoryGirl.create(:citation_author_relationship)
-    end
-    
-    #it "should have the right citation journal" do
-    #  get :show, :id => @citation
-    #  response.should have_selector("div", :content => @citation.journal)
-    #and
-    
-    it "should have an author list" do
-      get :show, :id => @citation
-      response.should have_selector("div", :content => @author.name)
-      #Technically, this currently only looks for a single author and not
-      #an entire list of authors
-    end
-    
-  end
+  
   
  describe "GET 'index'" do
   
@@ -249,6 +227,37 @@ describe CitationsController do
       end
       
     end
+    
+  end
+  
+  describe "reference string" do
+    
+    before(:each) do
+      @user = FactoryGirl.create(:user)
+      test_sign_in(@user)
+      @attr = {:title => "Test paper",
+               :author_list => "Test, J.; Testb, D.",
+               :journal => "J. Test Res.",
+               :publish_year => "2012",
+               :volume => "42",
+               :pages => "1-5"}
+      # @citation = FactoryGirl.create(:citation, :author_list => "Test, J.; Testb, D.",
+                                                # :journal => "J. Test Res.",
+                                                # :publish_year => "2012",
+                                                # :volume => "42",
+                                                # :pages => "1-5")
+    end
+    
+    describe "GET 'show'" do
+      
+      it "should have a correctly formatted reference string when all attributes present" do
+        @citation = Citation.create(@attr)
+        render "shared/_reference_string.html.erb", :locals => {:citation => @citation}
+        rendered.should have_selector("div", :content => "Test, J.; Testb, D. <i>J. Test Res.</i> <b>2012</b>, 42, 1-5.")
+      end
+      
+    end
+    
     
     
   end

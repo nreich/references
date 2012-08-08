@@ -1,0 +1,25 @@
+<% if @citation.citation_type == "journal"%>
+	<% if !@citation.journal.blank? && !@citation.publish_year.blank? && !@citation.volume.blank? && !@citation.pages.blank? %>
+		<%= @citation.author_list%> <i><%= @citation.journal %></i> <b><%= @citation.publish_year %></b>,
+		<%= @citation.volume%>, <%= @citation.pages %>.
+	<% elsif !@citation.journal.blank? %>
+		<%= @citation.author_list%> <i><%= @citation.journal %></i>
+		<% unless @citation.publish_year.blank? %>
+			<b><%= @citation.publish_year %></b>
+		<% end %>
+		<% unless @citation.volume.blank?%>
+			<%= ", " + @citation.volume %>
+		<% end %>
+		<% unless @citation.pages.blank? %>
+			<%= ", " + @citation.pages %>
+		<% end %>
+	<% else %>
+	<% end %>
+
+<% elsif @citation.citation_type == "patent" %>
+	<%= @citation.patent_number %>
+<% elsif @citation.citation_type == "book" %>
+	<%= @citation.author_list %> <%= @citation.title %>; <%= @citation.publisher %>: <%= @citation.publish_year %>.	
+<% end %>
+
+

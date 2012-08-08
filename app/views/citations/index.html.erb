@@ -33,13 +33,7 @@
 	    	</td>
 	    	<td>
 	    		<% if ref.citation_type == "journal" %>
-		    		<% unless ref.journal.nil?%>
-		    			<%=raw "<i>" + ref.journal + "</i>" %>
-		    			<% unless ref.publish_year.nil? %>
-		    				<%=raw "<b>" + ref.publish_year.to_s  + "</b>, " %>
-		    				<%= ref.volume + ", " + ref.pages + "." %>
-		    			<% end %>
-		    		<% end %>
+		    		<%= render :partial => "authorless_reference_string", :locals => { :citation => ref} %>
 	    		<% elsif ref.citation_type == "patent" %>
 	    			<% unless ref.patent_number.nil? %> 
 		    			<%= ref.patent_number %>

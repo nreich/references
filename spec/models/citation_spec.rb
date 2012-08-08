@@ -63,7 +63,6 @@ describe Citation do
     
   end
   
-  
 end
 # == Schema Information
 #

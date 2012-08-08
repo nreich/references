@@ -20,17 +20,6 @@ has_and_belongs_to_many :categories
       scoped
     end
   end
-  
-  def ref_string()
-    # Currently sticking to ACS Format, could later give user an option and relegate this method
-    # to a different location?
-    # ACS format is last_name, first_name; name_two, name_to_last; Journal, Year,
-    if citation_type == "journal"
-      authors = author_list()
-      
-      
-    end
-  end
  
 end
 # == Schema Information
