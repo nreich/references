@@ -3,10 +3,10 @@
 <table>
 	<thead>
 		<tr class="table_header">
-			<th id="ref_table_title_head">Title</th>
-			<th id="ref_table_abstract_head">Abstract</th>
-			<th id="ref_table_author_head">Authors</th>
-			<th id="ref_table_journal_head">Citation</th>
+			<th id="ref_table_title_head" width="20%">Title</th>
+			<th id="ref_table_abstract_head" width="40">Comments</th>
+			<th id="ref_table_author_head" width="30%">Authors</th>
+			<th id="ref_table_journal_head" width="10%">Citation</th>
 		</tr>
 	</thead>
 	<tbody>
@@ -19,12 +19,12 @@
 		    		<%= "no title"%>
 		    	<% end %>
 	    	</td>
-	    	<td id="abstract">
-	    		<% unless ref.abstract.nil? %> 
-		    		<%= ref.abstract %>
-		    	<% else %>
-		    		<%= "no abstract"%>
-		    	<% end %>
+	    	<td id="comments">
+	    		<%ref.comments.each do |comment|%>
+						<% unless ref.comments.nil? %>
+							<b><%= comment.user.first_name + " " + comment.user.last_name + ": " %></b><%= comment.content %><br>
+						<% end %>
+					<% end %>
     		</td>
 		    <td>
 		    	<% unless ref.author_list.empty? %> 

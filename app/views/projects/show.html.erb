@@ -16,6 +16,14 @@
 		<h3>Citations:</h3>
 		<% @citations.each do |citation| %>
 			<%=raw "<p>" + link_to(citation.title, citation_path(citation)) + "<p>" %>
+			<% unless citation.comments.nil? %>	
+				<ul>
+				<% citation.comments.each do |comment| %>
+					<li><b><%= comment.user.first_name + " " + comment.user.last_name + ": "%></b>
+					<%= comment.content %></li>
+				<% end %>
+				</ul>
+			<% end %>
 		<% end %>
 	</div>
 	<% @categories.each_with_index do |category, index|%>
