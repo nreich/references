@@ -1,0 +1,7 @@
+<% authors = @citation.ordered_authors() %>
+<% authors.each_with_index do |author, index| %>
+	<%= link_to author.name, author %>
+	<% unless index == (authors.size - 1) %>
+		<%= "; "%>
+	<% end %>
+<% end %>

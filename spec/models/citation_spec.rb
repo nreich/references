@@ -63,6 +63,22 @@ describe Citation do
     
   end
   
+  describe "ordered_authors() method" do
+    it "should have an ordered_authors() method" do
+      @citation.should respond_to(:ordered_authors)
+    end
+    
+    it "should return an array with authors in the right order" do
+      @author1 = FactoryGirl.create(:author)
+      CitationAuthorRelationship.create(:citation_id => @citation.id, :author_id => @author1.id, :author_order => 1)
+      @author2 = FactoryGirl.create(:author, :name => "second author")
+      CitationAuthorRelationship.create(:citation_id => @citation.id, :author_id => @author2.id, :author_order => 1)
+      author_array = @citation.ordered_authors()
+      author_array[0].should == @author1
+      author_array[1].should == @author2
+    end
+  end
+  
 end
 # == Schema Information
 #

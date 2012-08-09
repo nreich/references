@@ -9,7 +9,8 @@ References::Application.routes.draw do
   resources :comments, :only => [:create, :destroy]
   resources :projects
   resources :categories
-
+  resources :authors, :only => [:show]
+  
   match '/sign_up', :to => 'users#new'
   match '/sign_in', :to => 'sessions#new'
   match '/sign_out', :to => 'sessions#destroy'

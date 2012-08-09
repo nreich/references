@@ -1,7 +1,7 @@
 <section>
-<p>Articles in this category:</p>
+<p>Citations by <%= @author.name %>:</p>
 <ul>
-	<% @category.citations.each do |citation| %>
+	<% @author.citations.each do |citation| %>
 		<li><%= link_to(citation.title, citation_path(citation)) %></li>
 	<% end %>
 </ul>

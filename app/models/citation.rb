@@ -1,6 +1,6 @@
 class Citation < ActiveRecord::Base
 
-has_many :citation_author_relationships, :foreign_key => "citation_id"  #"author_id"
+has_many :citation_author_relationships, :foreign_key => "citation_id"
 has_many :authors, :through => :citation_author_relationships
 has_many :comments
 has_and_belongs_to_many :projects
@@ -19,6 +19,16 @@ has_and_belongs_to_many :categories
     else
       scoped
     end
+  end
+ 
+  def ordered_authors()
+    authors = Array.new
+    relations = CitationAuthorRelationship.where(["citation_id = ?", id]).order("author_order ASC")
+    relations.each do |relation|
+       author = Author.find(relation.author_id)
+       authors << author
+    end
+    return authors
   end
  
 end

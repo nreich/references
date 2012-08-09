@@ -2,7 +2,7 @@
 	<h3><%= @citation.title %></h3>
 	<div id="citation_info">
 	<b>Citation ID:</b> <%= @citation.id %><br>
-	<b>Authors:</b> <%= @citation.author_list%><br>
+	<b>Authors:</b> <%= render :partial => "authors" %><br>
 	<b>Citation:</b> <%= render :partial => "reference_string" %><br>
 	<b>File Location:</b> <a href="<%= @citation.file_location %>"><%= @citation.file_location %></a><br>
 	<b>Abstract:</b> <%= @citation.abstract %><br>	

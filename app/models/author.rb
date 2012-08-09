@@ -1,6 +1,6 @@
 class Author < ActiveRecord::Base
-  has_many :reference_author_relationships, :foreign_key => "reference_id"
-  has_many :references, :through => :reference_author_relationships
+  has_many :citation_author_relationships, :foreign_key => "author_id"
+  has_many :citations, :through => :citation_author_relationships
 end
 # == Schema Information
 #
