@@ -1,14 +1,21 @@
 class CategoriesController < ApplicationController
   
+  def new
+    @category = Category.new
+  end
+  
   def create
-    @citation = Citation.find(params[:citation_id])
-    @category = @citation.categories.build(params[:category])
-    if @category.save
-      
-    else
-      
-    end
+    @category = Category.new(params[:category])
+    @category.save
     redirect_to '/'
+    # @citation = Citation.find(params[:citation_id])
+    # @category = @citation.categories.build(params[:category])
+    # if @category.save
+#       
+    # else
+#       
+    # end
+    # redirect_to '/'
   end
   
   def index

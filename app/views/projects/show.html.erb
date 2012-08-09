@@ -32,6 +32,14 @@
 		<% @citations.each do |citation|%>
 			<% if category.citations.include?(citation)%>
 				<%=link_to(citation.title, citation_path(citation))%>
+				<% unless citation.comments.nil? %>	
+					<ul>
+					<% citation.comments.each do |comment| %>
+						<li><b><%= comment.user.first_name + " " + comment.user.last_name + ": "%></b>
+						<%= comment.content %></li>
+					<% end %>
+					</ul>
+			<% end %>
 			<% end %>
 		<% end %>
 		<%=raw "</div>"%>

@@ -1,11 +1,11 @@
 <section>
-<h3>Create a new project:</h3>
-<%= form_for @project do |f|%>
+<h3>Create a new category:</h3>
+<%= form_for @category do |f|%>
 	<div class="field">
 		<%= f.label :name %>
 		<%= f.text_field :name %>
 	</div	<div class="actions">
-		<%= f.submit "Create Project"%>
+		<%= f.submit "Create Category"%>
 	</div>
 <% end %>
 </section>
