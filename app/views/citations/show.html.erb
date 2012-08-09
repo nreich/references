@@ -4,11 +4,11 @@
 	<b>Citation ID:</b> <%= @citation.id %><br>
 	<b>Authors:</b> <%= @citation.author_list%><br>
 	<b>Citation:</b> <%= render :partial => "reference_string" %><br>
-	<b>File Location:</b> <a href="<%=@citation.file_location %>"><%=@citation.file_location %></a> <br>
-	<b>Abstract:</b> <%= @citation.abstract%><br>	
+	<b>File Location:</b> <a href="<%= @citation.file_location %>"><%= @citation.file_location %></a><br>
+	<b>Abstract:</b> <%= @citation.abstract %><br>	
 	</div>
 	<br>
-	<p><b>Tagged projects: </b><% if @citation.projects.nil?%><%= "none"%>
+	<p><b>Tagged projects: </b><% if @citation.projects.empty?%><%= "none"%>
 	<% else %>
 		<% @citation.projects.each_with_index do |project, index|%>
 			<% if index == @citation.projects.size() - 1 %>
@@ -18,7 +18,7 @@
 			<% end %>
 		<% end %>
 	<% end %> </p>
-	<p><b>Tagged categories: </b><% if @citation.categories.nil?%><%= "none"%>
+	<p><b>Tagged categories: </b><% if @citation.categories.empty?%><%= "none"%>
 	<% else %>
 		<% @citation.categories.each_with_index do |category, index| %>
 			<% if index == @citation.categories.size() - 1 %>

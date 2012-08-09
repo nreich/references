@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120802211819) do
+ActiveRecord::Schema.define(:version => 20120809183235) do
 
   create_table "authors", :force => true do |t|
     t.string   "name"
@@ -50,12 +50,12 @@ ActiveRecord::Schema.define(:version => 20120802211819) do
   create_table "citation_author_relationships", :force => true do |t|
     t.integer  "citation_id"
     t.integer  "author_id"
-    t.datetime "created_at",  :null => false
-    t.datetime "updated_at",  :null => false
+    t.datetime "created_at",   :null => false
+    t.datetime "updated_at",   :null => false
+    t.integer  "author_order"
   end
 
-  add_index "citation_author_relationships", ["author_id"], :name => "index_reference_author_relationships_on_author_id"
-  add_index "citation_author_relationships", ["citation_id"], :name => "index_reference_author_relationships_on_reference_id"
+  add_index "citation_author_relationships", ["citation_id", "author_id", "author_order"], :name => "unique_relationship", :unique => true
 
   create_table "citation_project_relations", :force => true do |t|
     t.string   "citation_id"

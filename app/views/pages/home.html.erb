@@ -39,7 +39,7 @@
 	<div id="tabs-3">
 		<ol>
 			<% @citation.each do |c| %>
-				<li><a href="<%= c.title %>"><%= c.title %></a></li>
+				<li><a href="<%= citation_path(c) %>"><%= c.title %></a></li>
 			<% end %>
 		</ol>
 	</div>
