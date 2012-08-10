@@ -45,6 +45,14 @@ section {
 	margin-left: 1em;
 }
 
+.pagination {
+	text-align: center;
+}
+
+.pagination a, em, span {
+	font-size: 150%;
+}
+
 /* Links */
 nav a {
 	 color: #09c;

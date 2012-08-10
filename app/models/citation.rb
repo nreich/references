@@ -6,11 +6,10 @@ has_many :comments
 has_and_belongs_to_many :projects
 has_and_belongs_to_many :categories
    
-  def self.search(search, method)
+  def self.search(search, method, page)
     if search
       if method == "title_or_abstract"
-      #This statement needs work, does not retrieve authors
-        find :all, :conditions => ['citations.title LIKE :search
+        paginate :per_page => 50, :page => page, :conditions => ['citations.title LIKE :search
                               OR citations.abstract LIKE :search', {:search => "%#{search}%"} ]
       elsif method == "author"
         find :all, :joins => :authors,

@@ -10,6 +10,7 @@ gem 'execjs'
 
 gem 'mysql2'
 gem 'sqlite3'
+gem 'will_paginate'
 #gem 'enum_column3'
 gem 'ZenTest'
 gem 'autotest-rails-pure'

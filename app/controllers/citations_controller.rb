@@ -1,7 +1,7 @@
 class CitationsController < ApplicationController
   
   def index
-    @citation = Citation.search(params[:search], params[:search_method])
+    @citations = Citation.search(params[:search], params[:search_method], params[:page])
   end
 
   def show

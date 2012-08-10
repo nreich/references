@@ -1,5 +1,6 @@
 <section id="table_section">
 <h3>Results for search "<%= params[:search]%>":</h3>
+<%= will_paginate %>
 <table>
 	<thead>
 		<tr class="table_header">
@@ -10,7 +11,7 @@
 		</tr>
 	</thead>
 	<tbody>
-		<% @citation.each do |ref| %>
+		<% @citations.each do |ref| %>
 		  <tr>
 		    <td>
 		    	<% unless ref.title.nil? %> 
@@ -44,5 +45,6 @@
 		<% end %>
 	</tbody>
 </table>
+<%= will_paginate %>
 </section>
 
