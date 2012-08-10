@@ -41,6 +41,10 @@ section {
 	width:1150px;
 }
 
+.indented {
+	margin-left: 1em;
+}
+
 /* Links */
 nav a {
 	 color: #09c;
