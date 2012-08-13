@@ -31,8 +31,8 @@ production:
   adapter: mysql2
   encoding: utf8
   reconnect: false
-  database: testproject_production
+  database: references_production
   pool: 5
-  username: root
-  password:
+  username: rails
+  password: ruby
   host: localhost

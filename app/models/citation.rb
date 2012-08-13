@@ -12,7 +12,7 @@ has_and_belongs_to_many :categories
         paginate :per_page => 50, :page => page, :conditions => ['citations.title LIKE :search
                               OR citations.abstract LIKE :search', {:search => "%#{search}%"} ]
       elsif method == "author"
-        find :all, :joins => :authors,
+        paginate :per_page => 50, :page => page, :joins => :authors,
                    :conditions => ['authors.name LIKE :search', {:search => "%#{search}%"} ]
       end
     else
