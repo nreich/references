@@ -8,12 +8,12 @@ describe Author do
       @author = FactoryGirl.create(:author)
     end
     
-    it "should have a reference_author_relationships method" do
-      @author.should respond_to(:reference_author_relationships)
+    it "should have a citation_author_relationships method" do
+      @author.should respond_to(:citation_author_relationships)
     end
     
-    it "should have a references method" do
-      @author.should respond_to(:references)
+    it "should have a citations method" do
+      @author.should respond_to(:citations)
     end
   
   end

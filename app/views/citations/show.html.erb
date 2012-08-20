@@ -1,11 +1,11 @@
 <section id="citation">
 	<h3><%= @citation.title %></h3>
 	<div id="citation_info">
-	<b>Citation ID:</b> <%= @citation.id %><br>
-	<b>Authors:</b> <%= render :partial => "authors" %><br>
-	<b>Citation:</b> <%= render :partial => "reference_string" %><br>
-	<b>File Location:</b> <a href="<%= @citation.file_location %>"><%= @citation.file_location %></a><br>
-	<b>Abstract:</b> <%= @citation.abstract %><br>	
+		<b>Citation ID:</b> <%= @citation.id %><br>
+		<b>Authors:</b> <%= render :partial => "authors" %><br>
+		<b>Citation:</b> <%= render :partial => "reference_string" %><br>	
+		<b>File Location:</b> <%= link_to(@citation.file_location, @citation.file_location) %><br>
+		<b>Abstract:</b> <%= @citation.abstract %><br>
 	</div>
 	<br>
 	<p><b>Tagged projects: </b><% if @citation.projects.empty?%><%= "none"%>
@@ -37,8 +37,7 @@
 	<h3>Add a comment:</h3>
 	<% @comment = Comment.new%>
 	<%= form_for @comment do |f|%>
-		<%= f.label :content%>
-		<%= f.text_field :content %>
+		<%= f.text_area :content %>
 		<%= f.hidden_field :citation_id, :value => @citation.id %>
 		<%= f.submit "submit" %>
 	<% end %>

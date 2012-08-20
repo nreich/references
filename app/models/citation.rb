@@ -16,7 +16,7 @@ has_and_belongs_to_many :categories
                    :conditions => ['authors.name LIKE :search', {:search => "%#{search}%"} ]
       end
     else
-      scoped
+      paginate :per_page => 50, :page => page
     end
   end
  
