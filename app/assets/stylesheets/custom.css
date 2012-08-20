@@ -1,22 +1,24 @@
 header {
-	padding-top: 5px;
-	padding-bottom: 10px;
+	background: #2F5FA5;
 }
 
-body {
-	background: #D5EDF8;
-}
 /*E5ECF9*/
 section {
-	margin-top: 1em;
+	margin: 0.5em;
 	padding: 2em;
 	border: 1px solid black;
 	border-radius: 5px;
 	background: #fff;
+	width:1150px;
 }
 
 .title {
 	display: inline;
+	color: #FFFFFF
+}
+
+.title h1 {
+	color: #FFFFFF;
 }
 
 .header {
@@ -37,9 +39,7 @@ section {
 	margin-left: 2em;
 }
 
-.container {
-	width:1150px;
-}
+
 
 .indented {
 	margin-left: 1em;
