@@ -31,6 +31,7 @@ describe ProjectsController do
       
       it "should create a new project" do
         lambda do
+          request.env["HTTP_REFERER"] = "/"
           post :create, :project => @attr
         end.should change(Project, :count).by(1)
       end

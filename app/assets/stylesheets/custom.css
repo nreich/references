@@ -68,6 +68,12 @@ nav a:visited {
 	color: #069;
 }
 
+/* Errors */
+#errors {
+	color: #FF0000;
+}
+
+
 /* Tables */
 table {
 	border-top: 2px solid black;

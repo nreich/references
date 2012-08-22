@@ -14,7 +14,7 @@ class UsersController < ApplicationController
     if @user.save
       sign_in @user
       flash[:success] = "Welcome to Ardelyx Reference Navigator"
-      redirect_to @user
+      redirect_to root_path
     else
       @title = "Sign Up"
       render 'new'

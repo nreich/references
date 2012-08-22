@@ -32,7 +32,7 @@ describe "Users" do
           fill_in "Password", :with => "secret"
           fill_in "Confirmation", :with => "secret"
           click_button
-          response.should render_template('users/show')
+          current_url.should == root_url
         end.should change(User, :count).by(1)
       end
       

@@ -6,8 +6,11 @@ class ProjectsController < ApplicationController
     
   def create
     @project = Project.new(params[:project])
-    @project.save
-    redirect_to '/'
+    if @project.save
+      redirect_to '/projects'
+    else
+      render 'new'
+    end
   end
   
   def index

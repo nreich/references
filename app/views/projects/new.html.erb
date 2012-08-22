@@ -1,6 +1,7 @@
 <section>
 <h3>Create a new project:</h3>
 <%= form_for @project do |f|%>
+<%= render 'shared/project_error_messages' %>
 	<div class="field">
 		<%= f.label :name %>
 		<%= f.text_field :name %>
