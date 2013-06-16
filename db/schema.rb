@@ -37,16 +37,6 @@ ActiveRecord::Schema.define(:version => 20120809183235) do
 
   add_index "categories_citations", ["category_id", "citation_id"], :name => "index_categories_citations_on_category_id_and_citation_id", :unique => true
 
-  create_table "category_citation_relations", :force => true do |t|
-    t.string   "category_id"
-    t.string   "citation_id"
-    t.string   "project_id"
-    t.datetime "created_at",  :null => false
-    t.datetime "updated_at",  :null => false
-  end
-
-  add_index "category_citation_relations", ["category_id", "citation_id", "project_id"], :name => "unique_category_citation_relations", :unique => true
-
   create_table "citation_author_relationships", :force => true do |t|
     t.integer  "citation_id"
     t.integer  "author_id"
@@ -55,16 +45,9 @@ ActiveRecord::Schema.define(:version => 20120809183235) do
     t.integer  "author_order"
   end
 
+  add_index "citation_author_relationships", ["author_id"], :name => "index_reference_author_relationships_on_author_id"
   add_index "citation_author_relationships", ["citation_id", "author_id", "author_order"], :name => "unique_relationship", :unique => true
-
-  create_table "citation_project_relations", :force => true do |t|
-    t.string   "citation_id"
-    t.string   "project_id"
-    t.datetime "created_at",  :null => false
-    t.datetime "updated_at",  :null => false
-  end
-
-  add_index "citation_project_relations", ["citation_id", "project_id"], :name => "index_citation_project_relations_on_citation_id_and_project_id", :unique => true
+  add_index "citation_author_relationships", ["citation_id"], :name => "index_reference_author_relationships_on_reference_id"
 
   create_table "citations", :force => true do |t|
     t.text     "title"
@@ -72,6 +55,7 @@ ActiveRecord::Schema.define(:version => 20120809183235) do
     t.text     "pubmed_url"
     t.text     "file_location"
     t.string   "citation_type"
+    t.date     "year"
     t.string   "journal"
     t.string   "issue"
     t.string   "volume"
