@@ -58,5 +58,8 @@ group :test do
   #gem 'spork', '~> 1.0rc'
   gem 'spork', '~> 0.9.2'
   gem 'webrat'
+end
+
+group :development, :test do
   gem 'factory_girl_rails'
 end

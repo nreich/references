@@ -16,7 +16,7 @@ class User < ActiveRecord::Base
   
   has_many :comments
   
-  email_regex = /\A[\w\-.]+@ardelyx.com/i
+  email_regex = /\A[\w\-.]+@[\w]+.com/i
   
   validates :first_name, :presence => true,
                          :length => { :maximum => 25 }

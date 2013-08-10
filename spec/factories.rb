@@ -3,27 +3,27 @@ FactoryGirl.define do
   factory :user do
     sequence(:first_name)  {|n| "example#{n}" }
     last_name              "user"
-    sequence(:email)       {|n|"example#{n}@ardelyx.com" }
+    sequence(:email)       {|n|"test#{n}@example.com" }
     password               "foobar"
     password_confirmation  "foobar"
   end
 
   factory :citation do
-    title           "Sample citation"
-    abstract        "This is just a sample citation"
-    pubmed_url      ""
-    file_location   "file://\\arx-fsv-01\global\Ardelyx_library\Ardelyx_library\000PDF\article.pdf"
-    citation_type  "journal"
-    publish_year    "2002"
-    journal         "Sample Journal"
-    issue           "1"
-    volume          "23"
-    pages           "2-10"
-    conference      "Sample Con"
-    patent_assignee "Big Pharma Co"
-    patent_number   "US 2004/1234567"
-    publisher       "Overprice Publisher"
-    author_list     "Smith, B.; Doe, J."
+    sequence(:title)          {|n|"Sample citation#{n}"}
+    sequence(:abstract)                  {|n|"This is sample citation #{n}"}
+    pubmed_url                ""
+    sequence(:file_location)  {|n|"a_place_#{n}"}
+    citation_type             "journal"
+    publish_year              "200#{Random.rand(0..9)}"
+    journal                   "Sample Journal #{Random.rand(1..20)}"
+    issue                     Random.rand(1..20)
+    volume                    Random.rand(1..100)
+    pages                     "2-10"
+    conference                "Sample Con"
+    patent_assignee           "Big Pharma Co"
+    patent_number             "US 2004/1234567"
+    publisher                 "Overprice Publisher"
+    author_list               "Smith, B.; Doe, J."
   end
   
   factory :author do
@@ -36,18 +36,18 @@ FactoryGirl.define do
   end
   
   factory :comment do
-    content "Sample comment content"
+    sequence(:content) {|n|"Sample comment content number #{n}"}
     association :user
     association :citation
   end
   
   factory :project do
-    name "test Project"
+    sequence(:name) {|n|"test Project #{n}"}
     #association :citation
   end
   
   factory :category do
-    name "sample category"
+    sequence(:name) {|n|"sample category #{n}"}
     #association :citation
   end
 
